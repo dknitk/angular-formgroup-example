@@ -54,4 +54,12 @@ export class FormGroupExampleComponent implements OnInit {
       language: this.language
     });
   }
+  onSubmit(){
+    if(this.myform.valid){
+      console.log("Form Submitted");
+      //Reset the Form Value
+      this.myform.reset();
+    }
+  }
+
 }
