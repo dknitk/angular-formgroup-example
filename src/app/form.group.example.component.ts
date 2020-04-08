@@ -10,6 +10,11 @@ export class FormGroupExampleComponent implements OnInit {
 
   welcomeComponentName = "FormGroup Example";
   myform: FormGroup;
+  firstName: FormControl;
+  lastName: FormControl;
+  email: FormControl;
+  password: FormControl;
+  language: FormControl;
 
   langs: string[] = [
     'Hindi',
@@ -19,25 +24,34 @@ export class FormGroupExampleComponent implements OnInit {
   ];
 
   ngOnInit() {
+    this.createFormControls();
+    this.createForm();
+  }
 
+  createFormControls(){
+
+    this.firstName = new FormControl('', Validators.required);
+    this.lastName = new FormControl('', Validators.required);
+    this.email = new FormControl('', [
+      Validators.required,
+      Validators.pattern("[^ @]*@[^ @]*")
+    ]);
+    this.password = new FormControl('',[
+      Validators.required,
+      Validators.minLength(8)
+    ]);
+    this.language = new FormControl('', Validators.required);
+
+  }
+  createForm(){
     this.myform = new FormGroup({
       name: new FormGroup({
-        firstName: new FormControl('', Validators.required),
-        lastName: new FormControl('', Validators.required)
+        firstName: this.firstName,
+        lastName: this.lastName
       }),
-      email: new FormControl('', [
-        Validators.required,
-        Validators.pattern("[^ @]*@[^ @]*")
-
-      ]),
-      password: new FormControl(
-        '', [
-        Validators.required,
-        Validators.minLength(8)
-      ]
-      ),
-      language: new FormControl()
+      email: this.email,
+      password: this.password,
+      language: this.language
     });
-
   }
 }
