@@ -1,16 +1,17 @@
-import { NgModule } from '@angular/core';
+import { NgModule, OnInit,ViewChild } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, FormGroup, FormControl } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { HelloComponent } from './hello.component';
 import { FormGroupExampleComponent } from './form.group.example.component';
-import { ReactiveModelFormComponent } from './form.reactive.module.component';
+
+import { TemplateFormComponent } from './form.template.component';
 
 @NgModule({
-  imports: [BrowserModule, FormsModule, ReactiveFormsModule],
-  declarations: [AppComponent, HelloComponent,
-    FormGroupExampleComponent, ReactiveModelFormComponent],
+  imports: [BrowserModule, FormsModule],
+  declarations: [AppComponent, HelloComponent,    
+    TemplateFormComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
